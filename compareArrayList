@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class compareDemo {
+    public static void main(String[] args) {
+        ArrayList<ArrayList<Object>> mainList = new ArrayList<>();
+
+        mainList.add(new ArrayList<>(Arrays.asList(101, "kaushik", 96)));
+        mainList.add(new ArrayList<>(Arrays.asList(102, "soham", 90)));
+        mainList.add(new ArrayList<>(Arrays.asList(103, "ram", 92)));
+
+        Collections.sort(mainList,Comparator.comparing(l -> (Integer) l.get(2))); //sorting arrayList records on the basis of particular column or index 
+        Collections.reverse(mainList);
+
+        System.out.println(mainList);
+    }
+}
