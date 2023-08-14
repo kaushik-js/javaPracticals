@@ -1,0 +1,46 @@
+//Converting \n String from csv like data into arrayList
+
+import java.util.*;
+
+public class CsvData {
+
+    public static ArrayList<ArrayList> convertToArrayList(String csv){
+
+        ArrayList<ArrayList> records = new ArrayList<>();
+        String[] lines = csv.split("##");
+        String[] header = lines[0].split(",");
+
+        for (int i = 1; i < lines.length; i++) {
+            String[] values = lines[i].split(",");
+            records.add(new ArrayList<>(Arrays.asList(values)));
+        }
+
+        return records;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<ArrayList> table = new ArrayList<>();
+        
+        String csv = sc.next(); // "StudentID,StudentFirstName,StudentLastName,Class,FavouriteSubject\nOne,Shashank,Dhyani,Tenth,Maths\nTwo,Karthik,K,Ninth,English\nThreee,Subhashini,Thiyagarajan,Eight,Physics\nFour,Purva,Yelpure,Ninth,Maths";
+        char[] cc = csv.toCharArray();
+        
+        for(int i=0;i<csv.length();i++){
+            if(cc[i] == '\\'){
+                cc[i] = '#';
+                cc[i+1] = '#';
+            }
+        }
+
+        String temp= "";
+        for(char c : cc){
+            temp+=""+c;
+        }
+        System.out.println(temp);
+        table = convertToArrayList(temp);
+        System.out.println(table);
+
+    }
+
+}
